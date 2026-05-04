@@ -1,0 +1,6 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "deploy": {
+    "startCommand": "NODE_ENV=production node ./bin/app"
+  }
+}
