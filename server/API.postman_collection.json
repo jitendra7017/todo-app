@@ -1,0 +1,119 @@
+{
+  "info": {
+    "_postman_id": "00000000-0000-0000-0000-000000000002",
+    "name": "Dogs Web API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "CRUD for dog breeds stored in JSON (breed key → list of sub-breed names). Default port 3001 matches server/.env.example."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001"
+    }
+  ],
+  "item": [
+    {
+      "name": "Root",
+      "item": [
+        {
+          "name": "API info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Dogs",
+      "item": [
+        {
+          "name": "List breeds (first page)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/dogs?limit=20&offset=0"
+          },
+          "response": []
+        },
+        {
+          "name": "List breeds (offset 20)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/dogs?limit=20&offset=20"
+          },
+          "response": []
+        },
+        {
+          "name": "Get one breed",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/dogs/pug"
+          },
+          "response": []
+        },
+        {
+          "name": "Create breed",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"breed\": \"testbreed\",\n  \"subBreeds\": [\"variant-a\", \"variant-b\"]\n}"
+            },
+            "url": "{{baseUrl}}/api/dogs"
+          },
+          "response": []
+        },
+        {
+          "name": "Update breed (sub-breeds only)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subBreeds\": [\"toy\"]\n}"
+            },
+            "url": "{{baseUrl}}/api/dogs/testbreed"
+          },
+          "response": []
+        },
+        {
+          "name": "Rename breed",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"breed\": \"testbreedrenamed\"\n}"
+            },
+            "url": "{{baseUrl}}/api/dogs/testbreed"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete breed",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/dogs/testbreedrenamed"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
