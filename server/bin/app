@@ -1,5 +1,6 @@
-require('dotenv').config()
-const APP_DIR = process.env.NODE_ENV === 'production' ? 'dist' : 'src'
+// require('dotenv').config()
+// const APP_DIR = process.env.NODE_ENV === 'production' ? 'dist' : 'src'
+const APP_DIR = 'dist'
 
 const { api } = require(`../${APP_DIR}`)
 const config = require(`../${APP_DIR}/config`)
